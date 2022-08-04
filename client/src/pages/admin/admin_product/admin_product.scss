@@ -1,0 +1,133 @@
+@use '../../../scss/' as * ;
+.admin-product {
+
+    padding: 0 30px;
+
+    .btn-create {
+        text-align: right;
+        margin: -40px 0 10px;
+
+        button {
+            border-radius: 20px;
+        }
+    }
+
+    table {
+        border-collapse: collapse;
+        border-radius: 10px !important;
+        border-style: hidden; /* hide standard table (collapsed) border */
+        box-shadow: 0 0 0 1px $main-color; /* this draws the table border  */ 
+
+        thead {
+            tr {
+                th {
+                    text-transform: uppercase;
+                    padding: 10px;
+                    border: 1px solid #b9dfee !important;
+
+                }
+            }
+        }
+
+        tbody {
+            tr {      
+                .des {
+                    overflow-y: scroll;
+                    -webkit-line-clamp: 5;
+                    display: -webkit-box;
+                    -webkit-box-orient: vertical;
+                    width: 400px;
+                    text-align: left;
+                    padding: 10px 10px 0;
+
+                }
+            }
+            img {
+                width: 80px;
+                height: 100px;
+                object-fit: cover;
+            }
+            td {
+                width: 150px;
+                text-align: center;
+                border: 1px solid #b9dfee !important;
+            }
+        }
+    }
+
+    #modal-create {
+        .modal__content {
+            background-color: white;
+            width: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+
+            .content {
+                width: 500px;
+                padding: 0 60px;    
+            }
+
+            .upload-img {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+
+                .img {
+                    width: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    padding: 5px 0;
+
+                    #file_img {
+                        width: 30%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                    }
+                    img {
+                        width: 40px;
+                        height: 50px;
+                        object-fit: cover;
+                    }
+                }
+            }
+
+            form {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+
+                .form-item {
+                    width: 100%;
+                    padding: 5px 0;
+                    display: flex;
+                    justify-content: space-between;
+
+                    label {
+                        text-transform: capitalize;
+                    }
+                    
+                    textarea,input {
+                        width: 250px;
+                        padding-left: 10px;
+                    }
+
+                    input {
+                        height: 30px;
+                    }
+                    
+                }
+                button {
+                    width: 160px;
+                    margin: 20px 0;
+                    border-radius: 10px;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,90 @@
+@use '../../scss/' as *;
+
+.btn {
+    position: relative;
+    cursor: pointer;
+    text-transform: uppercase;
+    color: $txt-white;
+    font-size: 1rem;
+    font-weight: 600;
+    overflow: hidden;
+    
+    &-text {
+        padding: 1rem 2rem;
+        display: block;
+        transition: all .3s ease-in;
+    }
+
+    &-icon {
+        position: absolute;
+        display: flex;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 100%;
+        font-size: 1.5rem;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        transform: translateX(-100%);
+        transition: all .3s ease-in;
+
+        &:hover svg {
+            animation: shake 0.3s;
+            animation-iteration-count: infinite;
+        }
+    }
+
+    &-animation:hover &-text {
+        transform: translateX(100%);
+    }
+
+    &-animation:hover &-icon {
+        transform: translateX(0);
+    }
+}
+
+.btn-sm {
+    padding: 0.8rem 2rem;
+    font-size: 1rem;
+}
+
+.btn-sm-1 {
+    padding: 0.5rem 1.2rem;
+    font-size: 0.8rem;
+}
+
+.btn-small {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+}
+
+.bg-main {
+    background-color: $main-color;
+}
+
+.bg-aqua {
+    background-color: aqua;
+}
+
+.bg-red {
+    background-color: red;
+}
+
+.bg-orange {
+    background-color: orange;
+}
+
+.bg-green {
+    background-color: green  ;
+}
+
+@keyframes shake {
+    0% { transform: rotate(0deg); }
+    25% { transform: rotate(5deg); }
+    50% { transform: rotate(0eg); }
+    75% { transform: rotate(-5deg); }
+    100% { transform: rotate(0deg); }
+  }

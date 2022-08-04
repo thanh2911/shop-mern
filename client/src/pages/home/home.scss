@@ -1,0 +1,15 @@
+@use  '../../scss/' as *;
+.home {
+    padding: 50px;  
+
+    &-content {
+        margin: 100px 0 ;
+    }
+
+    @include mobile {
+        padding: 10px; 
+    }
+    @include tablet {
+        padding: 30px; 
+    }
+}

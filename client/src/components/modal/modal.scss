@@ -1,0 +1,69 @@
+@use '../../scss/' as * ;
+
+.modal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: auto;
+    background-color: rgba(255,255,255,0.5);
+    z-index: 10;
+
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-100px);
+    transition: transform .3s ease;
+}
+
+.modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal__content {
+    padding: 1rem 0;
+    background-color: var(--body-bg);
+    // transform: translateY(-250px);
+    transform: scale(0);
+    opacity: 0;
+    transition: transform .6s ease , opacity .6s ease;
+    animation: ZoomModal 1s ease-out ;
+    position: relative;
+    box-shadow: $box-shadow;
+    
+    @include mobile {
+        padding:  10px;
+    }
+}
+
+.modal__content-close {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    font-size: 1.3rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.modal.active , .modal.active .modal__content {
+    opacity: 1;
+    transform: translateY(0);
+    transform: scale(1);
+}
+
+@keyframes ZoomModal {
+    0% {
+        transform: scale(0);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}

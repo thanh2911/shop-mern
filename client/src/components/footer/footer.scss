@@ -1,0 +1,29 @@
+.footer {
+    width: 100%;
+    margin-top: 100px;
+    padding: 50px;
+    box-shadow: 1px 1px 10px rgba(0,0,0,0.2);
+    overflow: hidden;
+
+
+    &-item {
+        img {
+            width: 170px;
+            margin-top: -40px;
+        }
+
+        &__img {
+            margin-top: -30px;
+            p {
+                margin-top: -10px;
+            }
+        }
+
+        padding-right: 50px;
+        margin-bottom: 30px;
+
+        * ~ * {
+            margin-top: 30px;
+        }
+    }
+}

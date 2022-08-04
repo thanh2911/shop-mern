@@ -1,0 +1,64 @@
+@use '../../../scss/' as * ;
+.categories {
+    width: 100%;
+    
+    .content {
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+
+        & > * ~ * {
+            margin-top: 20px;
+        }
+
+        input {
+            height: 40px;
+            width: 300px;
+            border: 1px solid rgb(206, 191, 191);
+            border-radius: 5px;
+            padding-left: 10px;
+            font-size: 1.2rem;
+        }
+        button {
+            border-radius: 10px;
+            width: 100px;
+        }
+    }
+
+    table {
+        border-collapse: collapse;
+        border-radius: 10px !important;
+        border-style: hidden; /* hide standard table (collapsed) border */
+        box-shadow: 0 0 0 1px $main-color; /* this draws the table border  */ 
+
+        thead {
+            tr {
+                th {
+                    text-transform: uppercase;
+                    padding: 10px;
+                    border: 1px solid #b9dfee !important;
+
+                }
+            }
+        }
+
+        tbody {
+            tr {      
+                td {
+                    width: 150px;
+                    text-align: center;
+                    border: 1px solid #b9dfee !important;
+                    padding: 10px 30px;
+                }
+            }
+
+
+        }
+    }
+
+}

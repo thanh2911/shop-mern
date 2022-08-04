@@ -1,0 +1,22 @@
+@use '../../scss/' as * ;
+
+.pagination {
+    text-align: center;
+    margin: 10px 0;
+
+    & > * ~ * {
+        margin-left: 10px;
+    }
+
+    .prev , .next, .number-page {
+        padding: 5px;
+        background-color: $white;
+        box-shadow: $box-shadow;
+        font-weight: 600;
+    }
+
+    .number-page.active {
+        background-color: $main-color;
+        color: $white;
+    }
+}
