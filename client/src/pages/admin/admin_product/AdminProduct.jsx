@@ -159,23 +159,23 @@ const AdminProduct = () => {
       setOnEdit(true)
     }
 
-    const deleteProduct = async(id, images1,images2) => {
+    const deleteProduct = async(id, images1,images2,title) => {
     try {
-        const destroyImg1 = axios.post('/api/destroy', {public_id: images1.public_id},{
-            headers: {Authorization: token}
-        })
-        const destroyImg2= axios.post('/api/destroy', {public_id: images2.public_id},{
+      if(window.confirm(`Do you want to delete ${title} ?`)){
+        const destroyImg1 = await axios.post('/api/destroy', {public_id: images1.public_id},{
           headers: {Authorization: token}
       })
-        const deleteProduct = axios.delete(`/api/products/${id}`, {
-            headers: {Authorization: token}
-        })
+      const destroyImg2= await axios.post('/api/destroy', {public_id: images2.public_id},{
+        headers: {Authorization: token}
+    })
+      const deleteProduct = await axios.delete(`/api/products/${id}`, {
+          headers: {Authorization: token}
+      })
 
-        await destroyImg1
-        await destroyImg2
-        await deleteProduct
-        alert(deleteProduct.data.msg)
-        setCallback(!callback)
+      alert(deleteProduct.data.msg)
+      setCallback(!callback)
+      }
+
     } catch (err) {
         alert(err.response.data.msg)
     }
@@ -183,9 +183,7 @@ const AdminProduct = () => {
 
     const styleUpload =  {
 
-    }
-
-  
+    } 
 
   return (
     <div className="admin-product">  
@@ -202,7 +200,7 @@ const AdminProduct = () => {
           </Button>
         </div>
 
-
+        
         <table className="table-product">
             <thead>
               <tr>
@@ -230,7 +228,7 @@ const AdminProduct = () => {
                       <td className='des'>{item.description}</td>
                       <td>{item.price}</td>
                       <td> <Button size='sm-1' onClick={ () => editProduct(item.product_id, {...item})}>Edit</Button></td>
-                      <td> <Button size='sm-1' bg= 'red'onClick={() => deleteProduct(item._id,item.images1,item.images2)}>Delete</Button></td>
+                      <td> <Button size='sm-1' bg= 'red'onClick={() => deleteProduct(item._id,item.images1,item.images2,item.title)}>Delete</Button></td>
 
                   </tr>
                 ))
@@ -301,7 +299,7 @@ const AdminProduct = () => {
                     <div className="form-item">
                         <label htmlFor="slug">Slug:</label>
                         <input type="text" name="slug" id="slug" required
-                        value={product.slug}  onChange={handleChangeInput} />
+                        value={product.slug}  onChange={handleChangeInput} disabled={onEdit}/>
                     </div>
 
                     <div className="form-item">

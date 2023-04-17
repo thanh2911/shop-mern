@@ -105,12 +105,12 @@ const productsCtrl = {
             if(!images1 || !images2) return res.status(400).json({msg: "No image upload"})
 
             
-            const slug_product = await Products.findOne({slug})
-                if(slug_product)
-                return res.status(400).json({msg: "This slug product already exists."})
+            // const slug_product = await Products.findOne({slug})
+            //     if(slug_product)
+            //     return res.status(400).json({msg: "This slug product already exists."})
 
             await Products.findOneAndUpdate({_id: req.params.id}, {
-                title: title.toLowerCase(), price, description, content, slug, color,images1,images2, category
+                title: title.toLowerCase(), price, description, content, color,images1,images2, category
             })
 
             res.json({msg: "Updated a Product"})

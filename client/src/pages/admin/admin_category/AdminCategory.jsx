@@ -48,13 +48,16 @@ const AdminCategory = () => {
         console.log(id,name);
     }
 
-    const deleteCategory = async id =>{
+    const deleteCategory = async (id,name) =>{
         try {
-            const res = await axios.delete(`/api/category/${id}`, {
-                headers: {Authorization: token}
-            })
-            alert(res.data.msg)
-            setCallback(!callback)
+            if(window.confirm(`Do you want to delete ${name} ?`)){
+                const res = await axios.delete(`/api/category/${id}`, {
+                    headers: {Authorization: token}
+                })
+                alert(res.data.msg)
+                setCallback(!callback)    
+            }
+
         } catch (err) {
             alert(err.response.data.msg)
         }
@@ -95,7 +98,7 @@ const AdminCategory = () => {
                     <tr  key={category._id}>
                         <td>{category.name}</td>
                         <td> <Button size={'sm-1'}  onClick={() => editCategory(category._id, category.name)}>Edit</Button></td>
-                        <td><Button size={'sm-1'} bg='red' onClick={() => deleteCategory(category._id)}>Delete</Button></td>
+                        <td><Button size={'sm-1'} bg='red' onClick={() => deleteCategory(category._id,category.name)}>Delete</Button></td>
                     </tr>
                     ))
                 }
